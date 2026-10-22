@@ -447,10 +447,10 @@ independence premise of a collocation, after feature extraction, before reading 
 <h2>7. Data and Resources</h2>
 <p>MRMS: NOAA Open Data Dissemination, <code>s3://noaa-mrms-pds</code>. GOES-16 ABI L2 CMIPC band 13:
 <code>s3://noaa-goes16</code>. IMERG Late V07 half-hourly (<code>GPM_3IMERGHHL.07</code>): NASA GES DISC (Earthdata login). USCRN
-hourly: NCEI. ASOS hourly precipitation: Iowa Environmental Mesonet. Code, frozen plans, results and the full chronological lab book
-(<code>LABBOOK.html</code>, including dead ends, amendments and file hashes) are in the project folder
-<code>precip-disagreement/</code>; the four-observer tetrad audit is <code>tetrad_audit</code> in <code>independence_audit.py</code>.
-These are available from the author on request; [a public repository link to be added before submission].</p>
+hourly: NCEI. ASOS hourly precipitation: Iowa Environmental Mesonet. Code, frozen plans, saved results and the full chronological
+lab book (<code>LABBOOK.html</code>, including dead ends, amendments and file hashes) are at
+<a href="https://github.com/parallaxmetrology/structural-collocation">github.com/parallaxmetrology/structural-collocation</a>
+(MIT licence); the four-observer tetrad audit is <code>tetrad_audit</code> in <code>scripts/independence_audit.py</code>.</p>
 
 <h2>Acknowledgements</h2>
 <p>Analysis code, figures and a first draft of this text were produced with the assistance of an AI model (Claude, ChatGPT, Gemini)

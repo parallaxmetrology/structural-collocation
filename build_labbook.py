@@ -236,7 +236,8 @@ July 2024 (replication: August 2024), CONUS · built {datetime.date.today().isof
 <div class="note">An investigation that started as a domain-qualification test and followed the evidence.
 Read each claim as <span class="tag conf">confirmatory</span> (pre-registered before measuring),
 <span class="tag expl">exploratory</span> (found after) or <span class="tag hyp">hypothesis</span> (proposed, untested).
-Every claim carries result + sample + where-it-fails.</div>
+Every claim carries result + sample + where-it-fails.
+Code, plans and saved results: <a href="https://github.com/parallaxmetrology/structural-collocation">github.com/parallaxmetrology/structural-collocation</a>.</div>
 
 <div class="status"><b>Status (2026-10-15, paused after T10).</b> The original question is closed, negative. The thread it opened,
 structural collocation, has one robust empirical result: the observer ranking depends on which observers form the triplet, and
