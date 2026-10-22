@@ -1,0 +1,220 @@
+{
+ "n_points": 2402,
+ "n_area": 14585,
+ "max_negative_share": 0.07,
+ "negative_shares": {
+  "area cy": 0.0,
+  "area cx": 0.0,
+  "T7 weak cy RGM_neg": 0.006,
+  "T7 weak cy RMG_neg": 0.002,
+  "T7 weak cx RGM_neg": 0.006,
+  "T7 weak cx RMG_neg": 0.0,
+  "T7 strong cy RGM_neg": 0.004,
+  "T7 strong cy RMG_neg": 0.004,
+  "T7 strong cx RGM_neg": 0.01,
+  "T7 strong cx RMG_neg": 0.07
+ },
+ "rows": [
+  {
+   "h": "H1",
+   "quantity": "area \u0394 cy",
+   "point": 0.22131596775437878,
+   "ci95": [
+    0.19361606362068348,
+    0.2503858304495863
+   ],
+   "met": true
+  },
+  {
+   "h": "H1",
+   "quantity": "area \u0394 cx",
+   "point": 0.19277683361636067,
+   "ci95": [
+    0.1642558774426398,
+    0.22444627993207397
+   ],
+   "met": true
+  },
+  {
+   "h": "H2",
+   "quantity": "point (R,GIR,MW) \u0394 weak cy",
+   "point": 0.19453803778066636,
+   "ci95": [
+    0.11624760462307929,
+    0.28133286123286394
+   ],
+   "met": true
+  },
+  {
+   "h": "H2",
+   "quantity": "point (R,GIR,MW) \u0394 weak cx",
+   "point": 0.2033786068149236,
+   "ci95": [
+    0.10427447466632943,
+    0.3120305827279989
+   ],
+   "met": true
+  },
+  {
+   "h": "H3",
+   "quantity": "point (R,MW,G) \u0394 weak cy",
+   "point": -0.19599993758781997,
+   "ci95": [
+    -0.25964183346550956,
+    -0.13370042440250543
+   ],
+   "met": true
+  },
+  {
+   "h": "H3",
+   "quantity": "point (R,MW,G) \u0394 weak cx",
+   "point": -0.2590817610757513,
+   "ci95": [
+    -0.33481563785398244,
+    -0.20150761014763177
+   ],
+   "met": true
+  },
+  {
+   "h": "H3",
+   "quantity": "point (R,MW,G) \u0394 strong cy",
+   "point": -0.21604429696583838,
+   "ci95": [
+    -0.26955645047265747,
+    -0.1668858769229235
+   ],
+   "met": true
+  },
+  {
+   "h": "H3",
+   "quantity": "point (R,MW,G) \u0394 strong cx",
+   "point": -0.36495797504734484,
+   "ci95": [
+    -0.4440748043321816,
+    -0.28154667243719106
+   ],
+   "met": true
+  },
+  {
+   "h": "H4",
+   "quantity": "mirror R1_R_minus_IR weak cy",
+   "point": -0.5923098782161123,
+   "ci95": [
+    -0.6936096939232754,
+    -0.4939756388454384
+   ],
+   "met": true
+  },
+  {
+   "h": "H4",
+   "quantity": "mirror R1_R_minus_G weak cy",
+   "point": -0.21507391774338758,
+   "ci95": [
+    -0.3131737991331692,
+    -0.1251089483576713
+   ],
+   "met": true
+  },
+  {
+   "h": "H4",
+   "quantity": "mirror R1_R_minus_IR weak cx",
+   "point": -0.6235773920925755,
+   "ci95": [
+    -0.7301155064027898,
+    -0.5200184779877075
+   ],
+   "met": true
+  },
+  {
+   "h": "H4",
+   "quantity": "mirror R1_R_minus_G weak cx",
+   "point": -0.2552643593605154,
+   "ci95": [
+    -0.3718972472036493,
+    -0.15769941895218453
+   ],
+   "met": true
+  },
+  {
+   "h": "H5",
+   "quantity": "c(GIR,MW) weak cy",
+   "point": 0.35030975040678286,
+   "ci95": [
+    0.2874816721706427,
+    0.4184233527144395
+   ],
+   "met": true
+  },
+  {
+   "h": "H5",
+   "quantity": "c(GIR,MW) weak cx",
+   "point": 0.36074040363876614,
+   "ci95": [
+    0.28404420274856346,
+    0.4370477320945764
+   ],
+   "met": true
+  },
+  {
+   "h": "H6",
+   "quantity": "tetrad t1 weak cy",
+   "point": 0.12012133286825843,
+   "ci95": [
+    0.08883910452267792,
+    0.15270873803738336
+   ],
+   "met": true
+  },
+  {
+   "h": "H6",
+   "quantity": "tetrad t2 weak cy",
+   "point": 0.13403370780099677,
+   "ci95": [
+    0.09925845477646435,
+    0.1731369742504447
+   ],
+   "met": true
+  },
+  {
+   "h": "H6",
+   "quantity": "tetrad t3 weak cy",
+   "point": 0.013912374932738336,
+   "ci95": [
+    -0.002665913151327076,
+    0.03251741432545867
+   ],
+   "met": true
+  }
+ ],
+ "met": {
+  "H1": true,
+  "H2": true,
+  "H3": true,
+  "H4": true,
+  "H5": true,
+  "H6": true
+ },
+ "verdict": "Replicated",
+ "secondary_T7S": {
+  "weak_cy": {
+   "rho_star_1": 0.5,
+   "rho_star_2": 0.425,
+   "rho_max": 0.5
+  },
+  "weak_cx": {
+   "rho_star_1": 0.5,
+   "rho_star_2": 0.475,
+   "rho_max": 0.5
+  },
+  "strong_cy": {
+   "rho_star_1": null,
+   "rho_star_2": 0.475,
+   "rho_max": 0.5
+  },
+  "strong_cx": {
+   "rho_star_1": null,
+   "rho_star_2": 0.5,
+   "rho_max": 0.5
+  }
+ }
+}

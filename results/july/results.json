@@ -1,0 +1,459 @@
+{
+ "n_samples": 288690,
+ "n_disc": 132755,
+ "n_val": 155935,
+ "by_src": {
+  "ASOS": 271511,
+  "USCRN": 17179
+ },
+ "clusters": {
+  "disc": 423,
+  "val": 533
+ },
+ "signal_share": {
+  "radar": 1.0,
+  "satellite": 1.0
+ },
+ "near_zero_omloc_share": 2.4247462676227094e-05,
+ "coverage": {
+  "om_loc": 1.0,
+  "om_pat": 1.0,
+  "om_iou": 1.0,
+  "om_islands": 1.0,
+  "om_disp": 1.0,
+  "om_void": 1.0,
+  "om_scale": 1.0,
+  "om_scale_rec": 1.0,
+  "om_edge": 1.0,
+  "om_pat_persist": 1.0,
+  "om_loc_ir": 0.8070005888669507,
+  "om_pat_ir": 0.8070005888669507,
+  "om_sigma_space": 0.8100730887803527,
+  "om_sigma_time": 0.7229727389241054,
+  "om_loc_mw": 0.3924659669541723
+ },
+ "gate6": {
+  "error_r_pearson_radar_vs_sat": 0.4678440628640111,
+  "error_r_spearman_radar_vs_sat": 0.404972312530136,
+  "field_r_cell": 0.511551612966674
+ },
+ "predictor_audit": {
+  "n": 166227,
+  "I": 0.19625487198216504,
+  "max_r": 0.9466377009456018,
+  "top_pairs": [
+   [
+    "om_pat~om_scale",
+    0.947
+   ],
+   [
+    "om_pat~om_pat_persist",
+    0.855
+   ],
+   [
+    "om_scale~om_pat_persist",
+    0.8
+   ],
+   [
+    "om_loc~om_scale",
+    0.668
+   ],
+   [
+    "om_loc_ir~om_pat_ir",
+    0.627
+   ],
+   [
+    "om_loc~om_pat",
+    0.58
+   ],
+   [
+    "om_pat~om_iou",
+    0.564
+   ],
+   [
+    "naive2~om_iou",
+    0.539
+   ]
+  ]
+ },
+ "descriptive_discovery": {
+  "ALL": {
+   "inc": {
+    "rho": 0.0026,
+    "partial": -0.0195,
+    "n": 132755
+   },
+   "naive1": {
+    "rho": 0.6794,
+    "partial": -0.2069,
+    "n": 132755
+   },
+   "naive2": {
+    "rho": 0.498,
+    "partial": -0.0325,
+    "n": 132755
+   },
+   "om_loc": {
+    "rho": -0.1636,
+    "partial": -0.0135,
+    "n": 132755
+   },
+   "om_pat": {
+    "rho": -0.1211,
+    "partial": -0.0147,
+    "n": 132755
+   },
+   "om_iou": {
+    "rho": -0.3709,
+    "partial": -0.0014,
+    "n": 132755
+   },
+   "om_islands": {
+    "rho": -0.0763,
+    "partial": -0.0091,
+    "n": 132755
+   },
+   "om_disp": {
+    "rho": -0.2528,
+    "partial": -0.0052,
+    "n": 132755
+   },
+   "om_void": {
+    "rho": 0.1237,
+    "partial": -0.014,
+    "n": 132755
+   },
+   "om_scale": {
+    "rho": -0.0514,
+    "partial": -0.0179,
+    "n": 132755
+   },
+   "om_scale_rec": {
+    "rho": -0.1042,
+    "partial": 0.0117,
+    "n": 132755
+   },
+   "om_edge": {
+    "rho": -0.268,
+    "partial": -0.041,
+    "n": 132755
+   },
+   "om_pat_persist": {
+    "rho": -0.1378,
+    "partial": -0.0133,
+    "n": 132755
+   },
+   "om_loc_ir": {
+    "rho": -0.1811,
+    "partial": 0.0026,
+    "n": 106217
+   },
+   "om_pat_ir": {
+    "rho": -0.0625,
+    "partial": 0.0039,
+    "n": 106217
+   },
+   "om_sigma_space": {
+    "rho": 0.1456,
+    "partial": -0.0035,
+    "n": 109277
+   },
+   "om_sigma_time": {
+    "rho": -0.2176,
+    "partial": 0.0018,
+    "n": 96009
+   },
+   "om_loc_mw": {
+    "rho": -0.124,
+    "partial": -0.0089,
+    "n": 55659
+   },
+   "om_pat_mw": {
+    "rho": -0.0893,
+    "partial": -0.0125,
+    "n": 55659
+   }
+  },
+  "USCRN": {
+   "inc": {
+    "rho": -0.0129,
+    "partial": 0.0305,
+    "n": 7400
+   },
+   "naive1": {
+    "rho": 0.6683,
+    "partial": -0.2089,
+    "n": 7400
+   },
+   "naive2": {
+    "rho": 0.447,
+    "partial": -0.0427,
+    "n": 7400
+   },
+   "om_loc": {
+    "rho": -0.1165,
+    "partial": -0.0053,
+    "n": 7400
+   },
+   "om_pat": {
+    "rho": -0.0663,
+    "partial": -0.0016,
+    "n": 7400
+   },
+   "om_iou": {
+    "rho": -0.2877,
+    "partial": 0.01,
+    "n": 7400
+   },
+   "om_islands": {
+    "rho": -0.0306,
+    "partial": -0.029,
+    "n": 7400
+   },
+   "om_disp": {
+    "rho": -0.2069,
+    "partial": -0.0045,
+    "n": 7400
+   },
+   "om_void": {
+    "rho": 0.1636,
+    "partial": -0.0183,
+    "n": 7400
+   },
+   "om_scale": {
+    "rho": -0.0071,
+    "partial": -0.0054,
+    "n": 7400
+   },
+   "om_scale_rec": {
+    "rho": -0.0842,
+    "partial": 0.0141,
+    "n": 7400
+   },
+   "om_edge": {
+    "rho": -0.191,
+    "partial": -0.0274,
+    "n": 7400
+   },
+   "om_pat_persist": {
+    "rho": -0.0723,
+    "partial": -0.0026,
+    "n": 7400
+   },
+   "om_loc_ir": {
+    "rho": -0.1636,
+    "partial": 0.0185,
+    "n": 5938
+   },
+   "om_pat_ir": {
+    "rho": -0.059,
+    "partial": 0.0327,
+    "n": 5938
+   },
+   "om_sigma_space": {
+    "rho": 0.1167,
+    "partial": -0.0199,
+    "n": 6092
+   },
+   "om_sigma_time": {
+    "rho": -0.166,
+    "partial": 0.0323,
+    "n": 5355
+   },
+   "om_loc_mw": {
+    "rho": -0.0718,
+    "partial": 0.0104,
+    "n": 3115
+   },
+   "om_pat_mw": {
+    "rho": -0.0331,
+    "partial": 0.0151,
+    "n": 3115
+   }
+  },
+  "ASOS": {
+   "inc": {
+    "rho": 0.0042,
+    "partial": -0.0248,
+    "n": 125355
+   },
+   "naive1": {
+    "rho": 0.6801,
+    "partial": -0.2069,
+    "n": 125355
+   },
+   "naive2": {
+    "rho": 0.5008,
+    "partial": -0.0324,
+    "n": 125355
+   },
+   "om_loc": {
+    "rho": -0.1663,
+    "partial": -0.0144,
+    "n": 125355
+   },
+   "om_pat": {
+    "rho": -0.1239,
+    "partial": -0.0155,
+    "n": 125355
+   },
+   "om_iou": {
+    "rho": -0.3755,
+    "partial": -0.0011,
+    "n": 125355
+   },
+   "om_islands": {
+    "rho": -0.0788,
+    "partial": -0.0085,
+    "n": 125355
+   },
+   "om_disp": {
+    "rho": -0.2554,
+    "partial": -0.005,
+    "n": 125355
+   },
+   "om_void": {
+    "rho": 0.1213,
+    "partial": -0.0134,
+    "n": 125355
+   },
+   "om_scale": {
+    "rho": -0.0538,
+    "partial": -0.0189,
+    "n": 125355
+   },
+   "om_scale_rec": {
+    "rho": -0.1051,
+    "partial": 0.0124,
+    "n": 125355
+   },
+   "om_edge": {
+    "rho": -0.2724,
+    "partial": -0.0416,
+    "n": 125355
+   },
+   "om_pat_persist": {
+    "rho": -0.1412,
+    "partial": -0.0136,
+    "n": 125355
+   },
+   "om_loc_ir": {
+    "rho": -0.1822,
+    "partial": 0.0021,
+    "n": 100279
+   },
+   "om_pat_ir": {
+    "rho": -0.0627,
+    "partial": 0.0033,
+    "n": 100279
+   },
+   "om_sigma_space": {
+    "rho": 0.1471,
+    "partial": -0.0038,
+    "n": 103185
+   },
+   "om_sigma_time": {
+    "rho": -0.2205,
+    "partial": 0.0021,
+    "n": 90654
+   },
+   "om_loc_mw": {
+    "rho": -0.1272,
+    "partial": -0.01,
+    "n": 52544
+   },
+   "om_pat_mw": {
+    "rho": -0.0923,
+    "partial": -0.0136,
+    "n": 52544
+   }
+  }
+ },
+ "resolution_floor_discovery": {
+  "n": 98751,
+  "pat_w3": -0.0277,
+  "pat_w5": -0.0237,
+  "pat_w7": -0.017,
+  "pat_w10": -0.0129,
+  "loc_w3": -0.0274,
+  "loc_w5": -0.0176,
+  "loc_w7": -0.0135,
+  "loc_w10": -0.0092
+ },
+ "decision": {
+  "frozen_v0": {
+   "rho_base": 0.6854572699140448,
+   "rho_full": 0.6854773171684658,
+   "delta": 2.004725442106281e-05,
+   "ci95": [
+    -0.000343605731595123,
+    0.0003471974127562609
+   ],
+   "go": false,
+   "n_val": 155935,
+   "n_clusters_val": 533
+  },
+  "variance_only": {
+   "rho_base": 0.6854572699140448,
+   "rho_full": 0.6868110573569574,
+   "delta": 0.0013537874429125907,
+   "ci95": [
+    0.0008639957415674554,
+    0.001857671544065084
+   ],
+   "go": false,
+   "n_val": 155935,
+   "n_clusters_val": 533
+  },
+  "FULL_A2": {
+   "rho_base": 0.6854572699140448,
+   "rho_full": 0.6869005469563115,
+   "delta": 0.0014432770422667662,
+   "ci95": [
+    0.0008179452070975701,
+    0.00211313485247544
+   ],
+   "go": false,
+   "n_val": 155935,
+   "n_clusters_val": 533
+  }
+ },
+ "null_spatial_scramble": {
+  "frozen_v0": {
+   "rho_base": 0.6823515486084964,
+   "rho_full": 0.6826613563802791,
+   "delta": 0.0003098077717826886,
+   "ci95": [
+    -0.00046944723091509597,
+    0.0010888689540423655
+   ],
+   "go": false,
+   "n_val": 155935,
+   "n_clusters_val": 533
+  },
+  "variance_only": {
+   "rho_base": 0.6823515486084964,
+   "rho_full": 0.6854028390739045,
+   "delta": 0.0030512904654080852,
+   "ci95": [
+    0.0018773751165135604,
+    0.004203189378183167
+   ],
+   "go": false,
+   "n_val": 155935,
+   "n_clusters_val": 533
+  },
+  "FULL_A2": {
+   "rho_base": 0.6823515486084964,
+   "rho_full": 0.6854533914710864,
+   "delta": 0.0031018428625899652,
+   "ci95": [
+    0.0018761401473340628,
+    0.004288666438957604
+   ],
+   "go": false,
+   "n_val": 155935,
+   "n_clusters_val": 533
+  }
+ }
+}

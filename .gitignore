@@ -1,0 +1,14 @@
+# Credentials: never commit.
+secrets/
+*.netrc
+# Inputs are re-created by the fetch scripts (about 1.7 GB per month).
+data/
+data_aug/
+# Environment and local caches
+.venv/
+__pycache__/
+.DS_Store
+# Literature PDFs are author copies; only the index is shared.
+literature/*.pdf
+literature/txt/
+snapshots/

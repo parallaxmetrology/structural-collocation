@@ -1,0 +1,115 @@
+"""Independent re-implementation from PROBE_A_PLAN/PROBE_A2_PLAN/T7*_PLAN (point estimates only)."""
+import numpy as np, pandas as pd, glob, os, json, sys
+from scipy import ndimage
+D = '/Users/russellparrish/Documents/russell/precip-disagreement/data/'
+OUT = os.path.dirname(os.path.abspath(__file__)) + '/'
+W = 15; NI, NJ = 23, 46; R0, C0 = 2, 2
+hours = pd.date_range('2024-07-01 01:00', '2024-07-22 00:00', freq='h')
+
+def fn(t): return t.strftime('%Y%m%d%H')
+def wins(a):  # (350,700) -> (NI,NJ,W,W)
+    a = a[R0:R0+NI*W, C0:C0+NJ*W]
+    return a.reshape(NI, W, NJ, W).transpose(0, 2, 1, 3)
+
+def load_hour(t):
+    p = D+'mrms/%s.npz' % fn(t)
+    if not os.path.exists(p): return None
+    R = np.load(p)['R'].astype(float)
+    pg = D+'goes/%s.npz' % fn(t)
+    if not os.path.exists(pg): return None
+    g = np.load(pg)
+    if g['nscan'] < 3: return None
+    Tb = g['Tb'].astype(float)
+    GIRc = np.where(np.isnan(Tb), np.nan, np.maximum(0, 235-Tb))
+    a, b = t-pd.Timedelta(hours=1), t-pd.Timedelta(minutes=30)
+    pa = [D+'imerg_x/%s.npz' % x.strftime('%Y%m%d%H%M') for x in (a, b)]
+    pm = [D+'imerg/%s.npy' % x.strftime('%Y%m%d%H%M') for x in (a, b)]
+    if not all(os.path.exists(x) for x in pa+pm): return None
+    mw = np.stack([np.load(x)['MW'].astype(float) for x in pa])
+    MW = np.nanmean(mw, 0)
+    M = np.mean([np.load(x).astype(float) for x in pm], 0)
+    return R, GIRc, MW, M
+
+idx = np.arange(W)-7
+YY, XX = np.meshgrid(idx, idx, indexing='ij')
+
+def struct(w):  # w (n,15,15) nonneg field, thr for wet
+    pass
+
+def window_vars(F, thr, strict):
+    """F: (n,W,W). returns dict of arrays."""
+    n = F.shape[0]
+    s = F.sum((1, 2))
+    wet = (F > thr) if strict else (F > thr)
+    out = {'wet': wet.mean((1, 2))}
+    with np.errstate(all='ignore'):
+        cy = (F*YY).sum((1, 2))/s; cx = (F*XX).sum((1, 2))/s
+        d2 = (YY[None]-cy[:, None, None])**2+(XX[None]-cx[:, None, None])**2
+        disp = np.sqrt((F*d2).sum((1, 2))/s)
+    out.update(cy=cy, cx=cx, disp=disp, logmean=np.log(F.mean((1, 2))+0.1))
+    st = np.ones((3, 3))
+    isl = np.zeros(n)
+    for k in range(n):
+        lab, nl = ndimage.label(wet[k], structure=st)
+        if nl: isl[k] = (np.bincount(lab.ravel())[1:] >= 2).sum()
+    out['isl'] = isl
+    return out
+
+def build():
+    rows = []; pts = []
+    gdf = pd.read_csv(D+'gauges.csv', parse_dates=['t_end'])
+    gdf['row'] = np.floor((55-gdf.lat)/0.1).astype(int)
+    gdf['col'] = np.floor((gdf.lon+130)/0.1).astype(int)
+    gdf = gdf[(gdf.row >= R0) & (gdf.row < R0+NI*W) & (gdf.col >= C0) & (gdf.col < C0+NJ*W)]
+    gdf['wi'] = (gdf.row-R0)//W; gdf['wj'] = (gdf.col-C0)//W
+    gby = {k: v for k, v in gdf.groupby('t_end')}
+    for t in hours:
+        h = load_hour(t)
+        if h is None: continue
+        R, G, MW, M = h
+        Rw, Gw, Mw = wins(R), wins(G), wins(MW)
+        Rv = (~np.isnan(Rw)).mean((2, 3)) >= 0.9
+        Gv = (~np.isnan(Gw)).all((2, 3))
+        mv = (~np.isnan(Mw)).mean((2, 3))
+        Mok = mv >= 0.8
+        Mc = (~np.isnan(wins(M))).all((2, 3))
+        ok = Rv & Gv & Mok & Mc
+        Rz, Mz = np.nan_to_num(Rw), np.nan_to_num(Mw)
+        ok &= (np.nan_to_num(wins(M)).sum((2, 3)) >= 1)
+        ok &= (Rz.sum((2, 3)) >= 1) & (Gw.sum((2, 3)) >= 1) & (Mz.sum((2, 3)) >= 1)
+        ii, jj = np.where(ok)
+        if len(ii):
+            f = {}
+            for nm, A, thr in (('R', Rz, 0.5), ('IR', np.nan_to_num(Gw), 0.0), ('MW', Mz, 0.5)):
+                f[nm] = window_vars(A[ii, jj], thr, True)
+            for k, (i, j) in enumerate(zip(ii, jj)):
+                r = {'t': t, 'i': i, 'j': j}
+                for nm in f:
+                    for v, a in f[nm].items(): r[nm+'_'+v] = a[k]
+                rows.append(r)
+            # point support
+            gt = gby.get(t)
+            if gt is not None:
+                okset = set(zip(ii, jj))
+                for (wi, wj), gg in gt.groupby(['wi', 'wj']):
+                    if (wi, wj) not in okset: continue
+                    rr = gg.row.values; cc = gg.col.values
+                    r_ = R[rr, cc]; g_ = G[rr, cc]; m_ = MW[rr, cc]
+                    m_ = np.nan_to_num(m_)
+                    gv = gg.p_mm.values
+                    v = ~np.isnan(r_) & ~np.isnan(g_) & ~np.isnan(gv)
+                    if v.sum() < 5: continue
+                    r_, g_, m_, gv = r_[v], g_[v], m_[v], gv[v]
+                    rr, cc = rr[v], cc[v]
+                    obs = {'R': r_, 'IR': g_, 'MW': m_, 'G': gv}
+                    if not all(o.sum() > 0 for o in obs.values()): continue
+                    y = rr-(R0+wi*W+7); x = cc-(C0+wj*W+7)
+                    rec = {'t': t, 'i': wi, 'j': wj, 'n_g': int(v.sum()),
+                           'rpeak': np.nanmax(wins(R)[wi, wj])}
+                    for nm, o in obs.items():
+                        rec[nm+'_cy'] = (o*y).sum()/o.sum(); rec[nm+'_cx'] = (o*x).sum()/o.sum()
+                    pts.append(rec)
+    pd.DataFrame(rows).to_csv(OUT+'a2_windows.csv', index=False)
+    pd.DataFrame(pts).to_csv(OUT+'t7_points.csv', index=False)
+
+if __name__ == '__main__': build()
